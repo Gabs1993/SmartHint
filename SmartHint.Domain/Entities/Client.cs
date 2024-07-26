@@ -14,19 +14,19 @@ namespace SmartHint.Domain.Entities
         public Guid Id { get; set; }
 
         [Required, StringLength(150)]
-        public string NomeRazaoSocial { get; set; }
+        public string? NomeRazaoSocial { get; set; }
         [Required, StringLength(150)]
         [EmailAddress(ErrorMessage = "O Email não é válido.")]
-        public string Email { get; set; }
+        public string? Email { get; set; }
         [Required]
-        public string Telefone { get; set; }
+        public string? Telefone { get; set; }
         [Required]
-        public string TipoPessoa { get; set; }
+        public string? TipoPessoa { get; set; }
         [Required]
         [Cpf(ErrorMessage = "CPF inválido.")]
-        public string CpfCnpj { get; set; }
+        public string? CpfCnpj { get; set; }
         [Required]
-        public string InscricaoEstadual { get; set; }
+        public string? InscricaoEstadual { get; set; }
 
         //Pessoa Fisica
         public string? Genero { get; set; }
