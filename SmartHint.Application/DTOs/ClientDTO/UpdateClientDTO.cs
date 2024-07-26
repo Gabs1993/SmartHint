@@ -6,11 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SmartHint.Domain.Entities
+namespace SmartHint.Application.DTOs.ClientDTO
 {
-    public class Client
+    public class UpdateClientDTO
     {
-        //Area Principal de cadastro
         public Guid Id { get; set; }
 
         [Required, StringLength(150)]
@@ -42,6 +41,6 @@ namespace SmartHint.Domain.Entities
 
         [StringLength(15, MinimumLength = 8, ErrorMessage = "A senha deve ter entre 8 e 15 caracteres.")]
         [RegularExpression(@"^.{8,15}$", ErrorMessage = "A senha deve ter entre 8 e 15 caracteres.")]
-        public int ConfirmarSenha { get; set; }
+        public int MyProperty { get; set; }
     }
 }
