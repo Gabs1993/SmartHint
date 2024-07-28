@@ -1,4 +1,5 @@
 ﻿using SmartHint.Application.DTOs.ClientDTO;
+using SmartHint.Domain.Entities;
 
 
 namespace SmartHint.Application.Interfaces
@@ -7,7 +8,7 @@ namespace SmartHint.Application.Interfaces
     {
         Task<ReadClientDTO> AddClientAsync(CreateClientDTO client);
         Task<ReadClientDTO> GetClientByIdAsync(Guid id);
-        Task<List<ReadClientDTO>> GetAllClientsAsync(int pageNumber, int pageSize);
+        Task<PageResult<ReadClientDTO>> GetAllClientsAsync(int pageNumber, int pageSize);
         Task<ReadClientDTO> UpdateClientAsync(Guid id, UpdateClientDTO client);
         Task DeleteClientAsync(Guid id);
     }

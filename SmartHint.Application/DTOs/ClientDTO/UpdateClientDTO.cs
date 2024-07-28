@@ -10,8 +10,7 @@ namespace SmartHint.Application.DTOs.ClientDTO
 {
     public class UpdateClientDTO
     {
-        public Guid Id { get; set; }
-
+        
         [Required, StringLength(150)]
         public string? NomeRazaoSocial { get; set; }
         [Required, StringLength(150)]

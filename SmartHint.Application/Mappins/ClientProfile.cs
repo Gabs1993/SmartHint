@@ -17,6 +17,10 @@ namespace SmartHint.Application.Mappins
             CreateMap<UpdateClientDTO, Client>();
             CreateMap<ReadClientDTO, Client>();
             CreateMap<Client, ReadClientDTO>();
+
+            CreateMap<PageResult<Client>, PageResult<ReadClientDTO>>()
+                    .ForMember(dest => dest.Items, opt => opt.MapFrom(src => src.Items))
+                    .ForMember(dest => dest.TotalRecords, opt => opt.MapFrom(src => src.TotalRecords));
         }
     }
 }

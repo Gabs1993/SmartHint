@@ -10,8 +10,6 @@ namespace SmartHint.Application.DTOs.ClientDTO
 {
     public class CreateClientDTO
     {
-        public Guid Id { get; set; }
-
         [Required, StringLength(150)]
         public string? NomeRazaoSocial { get; set; }
         [Required, StringLength(150)]
@@ -41,6 +39,6 @@ namespace SmartHint.Application.DTOs.ClientDTO
 
         [StringLength(15, MinimumLength = 8, ErrorMessage = "A senha deve ter entre 8 e 15 caracteres.")]
         [RegularExpression(@"^.{8,15}$", ErrorMessage = "A senha deve ter entre 8 e 15 caracteres.")]
-        public int MyProperty { get; set; }
+        public string ConfirmarSenha { get; set; }
     }
 }

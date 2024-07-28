@@ -30,10 +30,10 @@ namespace SmartHint.Application.Services
             await _clientRepository.DeleteClient(id);
         }
 
-        public async Task<List<ReadClientDTO>> GetAllClientsAsync(int pageNumber, int pageSize)
+        public async Task<PageResult<ReadClientDTO>> GetAllClientsAsync(int pageNumber, int pageSize)
         {
-            var client = await _clientRepository.GetAllClient(pageNumber, pageSize);
-            return _mapper.Map<List<ReadClientDTO>>(client);
+            var clientPageResult = await _clientRepository.GetAllClient(pageNumber, pageSize);
+            return _mapper.Map<PageResult<ReadClientDTO>>(clientPageResult);
         }
 
         public async Task<ReadClientDTO> GetClientByIdAsync(Guid id)
