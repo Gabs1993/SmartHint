@@ -19,7 +19,7 @@ namespace SmartHint.Web.Controllers
         public async Task<IActionResult> AddClient(CreateClientDTO clientDTO)
         {
             var client = await _services.AddClientAsync(clientDTO);
-            return CreatedAtAction(nameof(GetClientById), new { id = client.Id });
+            return CreatedAtAction(nameof(GetClientById), new { id = client.Id }, clientDTO);
         }
 
         [HttpGet("{id}")]

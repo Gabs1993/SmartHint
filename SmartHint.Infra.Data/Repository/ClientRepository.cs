@@ -54,6 +54,21 @@ namespace SmartHint.Infra.Data.Repository
             return await _context.Clients.FindAsync(id);
         }
 
+        public Task<Client?> GetCpfCnpj(string cpfCnpj)
+        {
+            return _context.Clients.FirstOrDefaultAsync(c => c.CpfCnpj == cpfCnpj);
+        }
+
+        public Task<Client?> GetEmail(string email)
+        {
+            return _context.Clients.FirstOrDefaultAsync(c => c.Email == email);
+        }
+
+        public Task<Client?> GetInscricaoEstadual(string inscricaoEstadual)
+        {
+            return _context.Clients.FirstOrDefaultAsync(c => c.InscricaoEstadual == inscricaoEstadual);
+        }
+
         public async Task<Client> UpdateClient(Client client)
         {
             _context.Clients.Update(client);

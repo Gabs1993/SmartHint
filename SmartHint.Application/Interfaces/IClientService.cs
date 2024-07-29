@@ -11,5 +11,11 @@ namespace SmartHint.Application.Interfaces
         Task<PageResult<ReadClientDTO>> GetAllClientsAsync(int pageNumber, int pageSize);
         Task<ReadClientDTO> UpdateClientAsync(Guid id, UpdateClientDTO client);
         Task DeleteClientAsync(Guid id);
+
+        Task<ReadClientDTO> GetEmailAsync(string email);
+
+        Task<ReadClientDTO> GetCpfCnpjAsync(string cpfCnpj);
+
+        Task <ReadClientDTO> GetInscricaoEstadualAsync(string inscricaoEstadual);
     }
 }

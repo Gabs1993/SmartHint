@@ -10,5 +10,11 @@ namespace SmartHint.Domain.Interfaces
         Task<PageResult<Client>> GetAllClient(int pageNumber, int pageSize);
         Task DeleteClient(Guid id);
         Task<Client> UpdateClient(Client client);
+
+        Task<Client> GetEmail(string email);
+
+        Task<Client> GetCpfCnpj(string cpfCnpj);
+
+        Task<Client> GetInscricaoEstadual(string inscricaoEstadual);
     }
 }
