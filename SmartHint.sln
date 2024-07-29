@@ -15,6 +15,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartHint.Web", "SmartHint.
 		{B84885BB-47C5-493A-B356-86AB6D9E993A} = {B84885BB-47C5-493A-B356-86AB6D9E993A}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHint.Tests", "SmartHint.Tests\SmartHint.Tests.csproj", "{690F07E5-D566-4437-9570-11FF3D2D43BA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6D0D4F02-7F53-43C2-9562-A6740D556B55} = {6D0D4F02-7F53-43C2-9562-A6740D556B55}
+		{B84885BB-47C5-493A-B356-86AB6D9E993A} = {B84885BB-47C5-493A-B356-86AB6D9E993A}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +43,10 @@ Global
 		{602B938F-4130-499C-89B7-547972F2B387}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{602B938F-4130-499C-89B7-547972F2B387}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{602B938F-4130-499C-89B7-547972F2B387}.Release|Any CPU.Build.0 = Release|Any CPU
+		{690F07E5-D566-4437-9570-11FF3D2D43BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{690F07E5-D566-4437-9570-11FF3D2D43BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{690F07E5-D566-4437-9570-11FF3D2D43BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{690F07E5-D566-4437-9570-11FF3D2D43BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
