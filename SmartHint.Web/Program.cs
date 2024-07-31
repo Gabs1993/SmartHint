@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using SmartHint.Application.Exceptions;
 using SmartHint.Application.Interfaces;
 using SmartHint.Application.Services;
 using SmartHint.Domain.Interfaces;
@@ -44,6 +45,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<CustomExceptionMiddleware>();
 
 app.UseHttpsRedirection();
 

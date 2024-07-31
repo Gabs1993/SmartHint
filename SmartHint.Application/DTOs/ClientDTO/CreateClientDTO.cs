@@ -15,7 +15,7 @@ namespace SmartHint.Application.DTOs.ClientDTO
         [Required]
         public string? TipoPessoa { get; set; }
         [Required]
-        [Cpf(ErrorMessage = "CPF inválido.")]
+        [CpfCnpj(ErrorMessage = "CPF inválido.")]
         public string? CpfCnpj { get; set; }
         [Required]
         public string? InscricaoEstadual { get; set; }

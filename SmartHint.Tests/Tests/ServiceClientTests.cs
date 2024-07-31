@@ -146,5 +146,71 @@ namespace SmartHint.Tests.Tests
             _clientRepositoryMock.Verify(repo => repo.GetInscricaoEstadual(inscricaoEstadual), Times.Once);
             _mapperMock.Verify(mapper => mapper.Map<ReadClientDTO>(client), Times.Once);
         }
+
+        [Fact]
+        public async Task TestDeleteClientAsync()
+        {
+            // Arrange
+            var clientId = Guid.NewGuid();
+
+            // Act
+            await _serviceClient.DeleteClientAsync(clientId);
+
+            // Assert
+            _clientRepositoryMock.Verify(repo => repo.DeleteClient(clientId), Times.Once);
+        }
+
+        [Fact]
+        public async Task TestUpdateClientAsync()
+        {
+            // Arrange
+            var clientId = Guid.NewGuid();
+            var updateClientDTO = new UpdateClientDTO
+            {
+                NomeRazaoSocial = "updated name",
+                Telefone = "updated phone",
+                TipoPessoa = "updated type",
+                Genero = "updated gender",
+                DateNascimento = DateTime.Now,
+                Email = "updated@example.com",
+                CpfCnpj = "12345678901",
+                InscricaoEstadual = "654321",
+                Senha = "newpassword",
+                ConfirmarSenha = "newpassword"
+            };
+
+            var existingClient = new Client();
+            var updatedClient = new Client();
+            var readClientDTO = new ReadClientDTO();
+
+            _clientRepositoryMock.Setup(repo => repo.GetClientById(clientId)).ReturnsAsync(existingClient);
+            _mapperMock.Setup(mapper => mapper.Map(updateClientDTO, existingClient)).Callback<UpdateClientDTO, Client>((dto, client) =>
+            {
+                client.NomeRazaoSocial = dto.NomeRazaoSocial;
+                client.Telefone = dto.Telefone;
+                client.TipoPessoa = dto.TipoPessoa;
+                client.Genero = dto.Genero;
+                client.DateNascimento = dto.DateNascimento;
+                client.Email = dto.Email;
+                client.CpfCnpj = dto.CpfCnpj;
+                client.InscricaoEstadual = dto.InscricaoEstadual;
+                client.Senha = dto.Senha;
+                client.ConfirmarSenha = dto.ConfirmarSenha;
+            });
+            _clientRepositoryMock.Setup(repo => repo.UpdateClient(existingClient)).ReturnsAsync(updatedClient);
+            _mapperMock.Setup(mapper => mapper.Map<ReadClientDTO>(updatedClient)).Returns(readClientDTO);
+
+            // Act
+            var result = await _serviceClient.UpdateClientAsync(clientId, updateClientDTO);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal(readClientDTO, result);
+            _clientRepositoryMock.Verify(repo => repo.GetClientById(clientId), Times.Once);
+            _mapperMock.Verify(mapper => mapper.Map(updateClientDTO, existingClient), Times.Once);
+            _clientRepositoryMock.Verify(repo => repo.UpdateClient(existingClient), Times.Once);
+            _mapperMock.Verify(mapper => mapper.Map<ReadClientDTO>(updatedClient), Times.Once);
+        }
+
     }
 }

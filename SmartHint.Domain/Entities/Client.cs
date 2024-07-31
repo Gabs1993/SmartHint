@@ -23,7 +23,7 @@ namespace SmartHint.Domain.Entities
         [Required]
         public string? TipoPessoa { get; set; }
         [Required]
-        [Cpf(ErrorMessage = "CPF inválido.")]
+        [CpfCnpj(ErrorMessage = "CPF inválido.")]
         public string? CpfCnpj { get; set; }
         [Required]
         public string? InscricaoEstadual { get; set; }
@@ -31,7 +31,7 @@ namespace SmartHint.Domain.Entities
         //Pessoa Fisica
         public string? Genero { get; set; }
 
-        public DateTime? DateNascimento { get; set; }
+        public DateTime? DateNascimento { get; set; } = DateTime.Now;
 
         public bool? Bloqueado { get; set; }
 

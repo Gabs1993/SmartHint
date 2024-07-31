@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using SmartHint.Application.DTOs.ClientDTO;
+using SmartHint.Application.Exceptions;
 using SmartHint.Application.Interfaces;
 using SmartHint.Domain.Entities;
 using SmartHint.Domain.Interfaces;
@@ -20,28 +21,27 @@ namespace SmartHint.Application.Services
 
         public async Task<ReadClientDTO> AddClientAsync(CreateClientDTO clientDTO)
         {
-
             if (clientDTO.Senha != clientDTO.ConfirmarSenha)
             {
-                throw new ArgumentException("A senha e a confirmação de senha precisam ser iguais.");
+                throw new CustomValidationException("A senha e a confirmação de senha precisam ser iguais.");
             }
 
             var existingEmail = await _clientRepository.GetEmail(clientDTO.Email);
             if (existingEmail != null)
             {
-                throw new ArgumentException("O e-mail já está em uso.");
+                throw new CustomValidationException("O e-mail já está em uso.");
             }
 
-            var existingCpjCnpj = await _clientRepository.GetCpfCnpj(clientDTO.CpfCnpj);
-            if (existingCpjCnpj != null)
+            var existingCpfCnpj = await _clientRepository.GetCpfCnpj(clientDTO.CpfCnpj);
+            if (existingCpfCnpj != null)
             {
-                throw new ArgumentException("O CPF/CNPJ já está em uso.");
+                throw new CustomValidationException("O CPF/CNPJ já está em uso.");
             }
 
             var existingInscricaoEstadual = await _clientRepository.GetInscricaoEstadual(clientDTO.InscricaoEstadual);
             if (existingInscricaoEstadual != null)
             {
-                throw new ArgumentException("A Inscrição Estadual já está em uso.");
+                throw new CustomValidationException("A Inscrição Estadual já está em uso.");
             }
 
             var client = _mapper.Map<Client>(clientDTO);

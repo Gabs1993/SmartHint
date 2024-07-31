@@ -34,7 +34,7 @@ namespace SmartHint.Web.Controllers
         }
 
         [HttpGet("buscarTodos")]
-        public async Task<IActionResult> GetAllClients(int pageNumber = 1, int pageSize = 10)
+        public async Task<IActionResult> GetAllClients(int pageNumber = 1, int pageSize = 20)
         {
             var result = await _services.GetAllClientsAsync(pageNumber, pageSize);
             return Ok(result);
